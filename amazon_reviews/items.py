@@ -7,6 +7,6 @@ import scrapy
 
 
 class AmazonReviewsItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    grade =                scrapy.Field()
+    review_title =         scrapy.Field()
+    comment =              scrapy.Field()
