@@ -55,6 +55,22 @@ ROBOTSTXT_OBEY = False
 #    'amazon_reviews.middlewares.AmazonReviewsDownloaderMiddleware': 543,
 #}
 
+PROXY_POOL_ENABLED = True
+
+DOWNLOADER_MIDDLEWARES = {
+#    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
+#    'scrapy_user_agents.middlewares.RandomUserAgentMiddleware': 400,
+    
+    # ...
+    'scrapy_proxy_pool.middlewares.ProxyPoolMiddleware': 610,
+    'scrapy_proxy_pool.middlewares.BanDetectionMiddleware': 620,
+    # ...
+}
+
+PROXY_POOL_PAGE_RETRY_TIMES = 2
+
+PROXY_POOL_REFRESH_INTERVAL = 90
+
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
 #EXTENSIONS = {
