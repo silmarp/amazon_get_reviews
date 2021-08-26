@@ -55,21 +55,22 @@ ROBOTSTXT_OBEY = False
 #    'amazon_reviews.middlewares.AmazonReviewsDownloaderMiddleware': 543,
 #}
 
-PROXY_POOL_ENABLED = True
-
 DOWNLOADER_MIDDLEWARES = {
+#    <----------------- USER AGENT ROTATION ------------------------------>
 #    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
 #    'scrapy_user_agents.middlewares.RandomUserAgentMiddleware': 400,
-    
+#    <-------------------------------------------------------------------->
+
+#<-------------------- PROXIES ROTATION ---------------------------------->
     # ...
-    'scrapy_proxy_pool.middlewares.ProxyPoolMiddleware': 610,
-    'scrapy_proxy_pool.middlewares.BanDetectionMiddleware': 620,
+    'rotating_proxies.middlewares.RotatingProxyMiddleware': 610,
+    'rotating_proxies.middlewares.BanDetectionMiddleware': 620,
     # ...
+#<------------------------------------------------------------------------>
+
 }
 
-PROXY_POOL_PAGE_RETRY_TIMES = 2
-
-PROXY_POOL_REFRESH_INTERVAL = 90
+ROTATING_PROXY_LIST_PATH = '/home/silmar/Projects/scraper/amazon_reviews/amazon_reviews/proxies.txt'
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
